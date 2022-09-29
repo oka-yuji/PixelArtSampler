@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var model = Model()
-    @State var saveIndex: [(row: Int, column: Int)] = []
     var body: some View {
         VStack {
             VStack {
@@ -21,7 +20,7 @@ struct ContentView: View {
                                 .foregroundColor(
                                     model.selectedcolumn == column &&
                                     model.selectedRow == row ||
-                                    saveIndex.contains(where: { (indexRow, indexColumn) in
+                                    model.saveIndex.contains(where: { (indexRow, indexColumn) in
                                         indexRow == row && indexColumn == column
                                     }) ? .red : .clear
                                 )
@@ -47,7 +46,7 @@ struct ContentView: View {
                 }
                 Spacer()
                 Button {
-                    saveIndex.append((model.selectedRow, model.selectedcolumn))
+                    model.saveIndex.append((model.selectedRow, model.selectedcolumn))
                 } label: {
                     Text("tap!")
                         .frame(width: 100, height: 100)

@@ -10,6 +10,7 @@ import SwiftUI
 class Model: ObservableObject {
     @Published var selectedcolumn = 0
     @Published var selectedRow = 0
+    @Published var saveIndex: [(row: Int, column: Int)] = []
     
     func incremental(num: Int) -> Int {
         return num + 1
